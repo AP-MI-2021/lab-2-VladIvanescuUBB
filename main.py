@@ -131,35 +131,43 @@ class TestAntipalindrome (unittest.TestCase):
         assert is_antiplaindrome(2773) is False
 
 
+def main():
+    shouldRun = True
+    print("1. Găsește ultimul număr prim mai mic decât un număr dat.")
+    print("5. Determină dacă un număr dat este palindrom.")
+    print("5. Determină dacă un număr este antipalindrom.")
+    print("0. Iesire")
+    while shouldRun:
 
-shouldRun = True
-print("1. Găsește ultimul număr prim mai mic decât un număr dat.")
-print("5. Determină dacă un număr dat este palindrom.")
-print("5. Determină dacă un număr este antipalindrom.")
-print("0. Iesire")
-while shouldRun:
+        x = int(input("Reolva cerina nr.: "))
+        if x == 1:
+            n = int(input("dati nr: "))
+            rezultat = get_largest_prime_below(n)
+            if rezultat == -1:
+                print("Nu exista un astfel de numar")
+            else:
+                print(rezultat)
+        elif x == 5:
+            n = int(input("dati nr: "))
+            if is_palindrome(n) == True:
+                print("numarul ", n, " este palindrom")
+            else:
+                print("numarul ", n, " NU este palindrom")
+        elif x == 7:
+            n = int(input("dati nr: "))
+            if is_antiplaindrome(n) is True:
+                print("numarul ", n, " este antipalindrom")
+            else:
+                print("numarul ", n, " nu este antipalindrom")
+        elif x == 0:
+            shouldRun = False
+        else:
+            print("optiune gresita! mai incearca")
 
-    x = int(input("Reolva cerina nr.: "))
-    if x == 1:
-        n = int(input("dati nr: "))
-        rezultat = get_largest_prime_below(n)
-        if rezultat == -1:
-            print("Nu exista un astfel de numar")
-        else:
-            print(rezultat)
-    elif x == 5:
-        n = int(input("dati nr: "))
-        if is_palindrome(n) == True:
-            print("numarul ", n, " este palindrom")
-        else:
-            print("numarul ", n, " NU este palindrom")
-    elif x == 7:
-        n = int(input("dati nr: "))
-        if is_antiplaindrome(n) is True:
-            print("numarul ", n, " este antipalindrom")
-        else:
-            print("numarul ", n, " nu este antipalindrom")
-    elif x == 0:
-        shouldRun = False
-    else:
-        print("optiune gresita! mai incearca")
+
+if __name__ == '__main__':
+    main()
+
+
+
+
