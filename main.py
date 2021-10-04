@@ -22,7 +22,7 @@ def get_largest_prime_below(n):
     :return: ultimul numar prim mai mic decat n sau -1 daca nu exista un astfel de numar
     """
     if n < 3:
-        return -1
+        return None
     for i in range(n - 1, 1, -1):
         if is_prime(i):
             return i
@@ -78,7 +78,7 @@ class TestPalindrome(unittest.TestCase):
         assert is_palindrome(33) == True
 
 
-def sterge_prima_cifra (n):
+def sterge_prima_cifra(n):
     '''
     functia sterge prima cifra a unui numar
     :param n: un numar intreg
@@ -93,8 +93,7 @@ def sterge_prima_cifra (n):
     return nr_nou
 
 
-
-def prima_cifra (n):
+def prima_cifra(n):
     '''
     functia calculeaza prima cifra a unui numar
     :param n: un numar intreg
@@ -102,10 +101,10 @@ def prima_cifra (n):
     '''
     while n > 9:
         n = n // 10
-    return  n
+    return n
 
 
-def is_antiplaindrome (n):
+def is_antipalindrome(n):
     '''
     functia verifica daca un numar dat este antipalindrom sau nu
     :param n: un numar intreg
@@ -119,8 +118,8 @@ def is_antiplaindrome (n):
     return True
 
 
-class TestAntipalindrome (unittest.TestCase):
-    def test_is_antiplaindrome (self):
+class TestAntipalindrome(unittest.TestCase):
+    def test_is_antipalindrome(self):
         '''
         teste pentru functia is_antipalindrome
         '''
@@ -143,7 +142,7 @@ def main():
         if x == 1:
             n = int(input("dati nr: "))
             rezultat = get_largest_prime_below(n)
-            if rezultat == -1:
+            if rezultat == None1:
                 print("Nu exista un astfel de numar")
             else:
                 print(rezultat)
@@ -155,7 +154,7 @@ def main():
                 print("numarul ", n, " NU este palindrom")
         elif x == 7:
             n = int(input("dati nr: "))
-            if is_antiplaindrome(n) is True:
+            if is_antipalindrome(n) is True:
                 print("numarul ", n, " este antipalindrom")
             else:
                 print("numarul ", n, " nu este antipalindrom")
@@ -167,7 +166,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
-
