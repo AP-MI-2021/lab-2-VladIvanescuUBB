@@ -78,9 +78,64 @@ class TestPalindrome(unittest.TestCase):
         assert is_palindrome(33) == True
 
 
+def sterge_prima_cifra (n):
+    '''
+    functia sterge prima cifra a unui numar
+    :param n: un numar intreg
+    :return: numarul n, fara prima cifra
+    '''
+    nr_nou = 0
+    p = 1
+    while n > 9:
+        nr_nou = n % 10 * p + nr_nou
+        p = p * 10
+        n = n // 10
+    return nr_nou
+
+
+
+def prima_cifra (n):
+    '''
+    functia calculeaza prima cifra a unui numar
+    :param n: un numar intreg
+    :return: prima cifra a lui n
+    '''
+    while n > 9:
+        n = n // 10
+    return  n
+
+
+def is_antiplaindrome (n):
+    '''
+    functia verifica daca un numar dat este antipalindrom sau nu
+    :param n: un numar intreg
+    :return: True, daca n este antipalindrom, False in caz contrar
+    '''
+    while n > 9:
+        if prima_cifra(n) == n % 10:
+            return False
+        n = sterge_prima_cifra(n)
+        n = n / 10
+    return True
+
+
+class TestAntipalindrome (unittest.TestCase):
+    def test_is_antiplaindrome (self):
+        '''
+        teste pentru functia is_antipalindrome
+        '''
+        assert is_antiplaindrome(3) is True
+        assert is_antiplaindrome(12) is True
+        assert is_antiplaindrome(121) is False
+        assert is_antiplaindrome(2783) is True
+        assert is_antiplaindrome(2773) is False
+
+
+
 shouldRun = True
 print("1. Găsește ultimul număr prim mai mic decât un număr dat.")
 print("5. Determină dacă un număr dat este palindrom.")
+print("5. Determină dacă un număr este antipalindrom.")
 print("0. Iesire")
 while shouldRun:
 
@@ -98,6 +153,12 @@ while shouldRun:
             print("numarul ", n, " este palindrom")
         else:
             print("numarul ", n, " NU este palindrom")
+    elif x == 7:
+        n = int(input("dati nr: "))
+        if is_antiplaindrome(n) is True:
+            print("numarul ", n, " este antipalindrom")
+        else:
+            print("numarul ", n, " nu este antipalindrom")
     elif x == 0:
         shouldRun = False
     else:
